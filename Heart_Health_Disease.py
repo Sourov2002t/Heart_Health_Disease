@@ -351,9 +351,7 @@ df = pd.concat(frames, axis = 1)
 df.head().style.background_gradient(cmap='PuRd').hide().set_properties(**{'font-family': 'Segoe UI'})
 
 """# Dropping Unnecessary Variables
-
-    👉 The <b>variables that unnecessary will be deleted</b>.
-
+The <b>variables that unnecessary will be deleted</b>.
 """
 
 # --- Drop Unnecessary Variables ---
@@ -362,10 +360,8 @@ df = df.drop(columns = ['cp', 'thal', 'slope'])
 # --- Display New Data Frame ---
 df.head().style.background_gradient(cmap='Reds').hide().set_properties(**{'font-family': 'Segoe UI'})
 
-"""## <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;">Features Separating ➗</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-    👉 In this section, <mark><b>the 'target' (dependent) column will be seperated</b></mark> from independent columns.
-</div>
+"""## Features Separating
+In this section, the 'target' (dependent) column will be seperated from independent columns.
 """
 
 # --- Seperating Dependent Features ---
@@ -373,33 +369,26 @@ x = df.drop(['target'], axis=1)
 y = df['target']
 
 """# Data Normalization 
-    👉 In this section, data normalization will be performed to normalize the range of independent variables or features of data.
-    👉 Data normalization will use <mark><b>min-max normalization.
-    
-    📌 <b>Min-max normalization</b> is often known as feature scaling where <mark><b>the values of a numeric range of a feature of data, are reduced to a scale between 0 and 1</b></mark>.
-    </blockquote>
+    In this section, data normalization will be performed to normalize the range of independent variables or features of data.
+    Data normalization will use <mark><b>min-max normalization.
+    Min-max normalization is often known as feature scaling where the values of a numeric range of a feature of data, are reduced to a scale between 0 and 1 .
 """
 
 # --- Data Normalization using Min-Max Method ---
 x = MinMaxScaler().fit_transform(x)
 
-"""## <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;"> Splitting the Dataset 🪓</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-    👉 The dataset will be splitted into <mark><b>80:20 ratio</b></mark> (80% training and 20% testing).
-</div>
+"""## Splitting the Dataset
+    The dataset will be splitted into <mark><b>80:20 ratio (80% training and 20% testing)
 """
 
 # --- Splitting Dataset into 80:20 ---
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=4)
 
-"""# <div style="font-family: Trebuchet MS; background-color: #BA1141; color: #FFFFFF; padding: 12px; line-height: 1.5;">Model Implementation 🛠</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-    👉 This section will implement various machine learning models as mentioned in <b>Introduction</b> section. In addition, explanation for each models will be discussed.
-</div>
+"""# Model Implementation 
 
-## <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;"> Logistic Regression</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-"""
+    This section will implement various machine learning models as mentioned in <b>Introduction section. In addition, explanation for each models will be discussed.
+
+## Logistic Regression """
 
 # --- Applying Logistic Regression ---
 LRclassifier = LogisticRegression(max_iter=1000, random_state=1, solver='liblinear', penalty='l1')
@@ -407,25 +396,13 @@ LRclassifier.fit(x_train, y_train)
 
 y_pred_LR = LRclassifier.predict(x_test)
 
-"""<div style="color:white;
-            display:fill;
-            border-radius:8px;
-            background-color:#2b2b2b;
-            font-size:120%;
-            font-family:sans-serif;
-            letter-spacing:0.5px">
-    <p style="padding: 8px;color:white;"><b>👉 | Logistic Regression -84% acc</b></p>
-</div>
-"""
+"""# Logistic Regression -84% """
 
 # --- LR Accuracy ---
 LRAcc = accuracy_score(y_pred_LR, y_test)
 print('.:. Logistic Regression Accuracy:'+'\033[1m {:.2f}%'.format(LRAcc*100)+' .:.')
 
-"""## <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;"> K-Nearest Neighbour (KNN)</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-   
-"""
+"""## <K-Nearest Neighbour (KNN) """
 
 # --- Applying KNN ---
 KNNClassifier = KNeighborsClassifier(n_neighbors=3)
@@ -433,24 +410,13 @@ KNNClassifier.fit(x_train, y_train)
 
 y_pred_KNN = KNNClassifier.predict(x_test)
 
-"""<div style="color:white;
-            display:fill;
-            border-radius:8px;
-            background-color:#2b2b2b;
-            font-size:120%;
-            font-family:sans-serif;
-            letter-spacing:0.5px">
-    <p style="padding: 8px;color:white;"><b>👉 | KNearest Neighbors - 96% acc</b></p>
-</div>
-"""
+"""# KNearest Neighbors - 96% """
 
 # --- KNN Accuracy ---
 KNNAcc = accuracy_score(y_pred_KNN, y_test)
 print('.:. K-Nearest Neighbour Accuracy:'+'\033[1m {:.2f}%'.format(KNNAcc*100)+' .:.')
 
-"""## <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;"> Support Vector Machine (SVM)</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-"""
+"""## Support Vector Machine (SVM) """
 
 # --- Applying SVM ---
 SVMclassifier = SVC(kernel='linear', max_iter=1000, C=10, probability=True)
@@ -458,24 +424,13 @@ SVMclassifier.fit(x_train, y_train)
 
 y_pred_SVM = SVMclassifier.predict(x_test)
 
-"""<div style="color:white;
-            display:fill;
-            border-radius:8px;
-            background-color:#2b2b2b;
-            font-size:120%;
-            font-family:sans-serif;
-            letter-spacing:0.5px">
-    <p style="padding: 8px;color:white;"><b>👉 | SVM - 84% acc</b></p>
-</div>
-"""
+"""# SVM - 84% """
 
 # --- SVM Accuracy ---
 SVMAcc = accuracy_score(y_pred_SVM, y_test)
 print('.:. Support Vector Machine Accuracy:'+'\033[1m {:.2f}%'.format(SVMAcc*100)+' .:.')
 
-"""## <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;">Gaussian Naive Bayes</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-"""
+"""## Gaussian Naive Bayes """
 
 # --- Applying Gaussian NB ---
 GNBclassifier = GaussianNB(var_smoothing=0.1)
@@ -483,26 +438,13 @@ GNBclassifier.fit(x_train, y_train)
 
 y_pred_GNB = GNBclassifier.predict(x_test)
 
-"""<div style="color:white;
-            display:fill;
-            border-radius:8px;
-            background-color:#2b2b2b;
-            font-size:120%;
-            font-family:sans-serif;
-            letter-spacing:0.5px">
-    <p style="padding: 8px;color:white;"><b>👉 |
-Gaussian Naive Bayes - 83% acc</b></p>
-</div>
-"""
+"""# Gaussian Naive Bayes - 83%  """
 
 # --- GNB Accuracy ---
 GNBAcc = accuracy_score(y_pred_GNB, y_test)
 print('.:. Gaussian Naive Bayes Accuracy:'+'\033[1m {:.2f}%'.format(GNBAcc*100)+' .:.')
 
-"""## <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;"> Decision Tree</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-  
-"""
+"""## Decision Tree """
 
 # --- Applying Decision Tree ---
 DTCclassifier = DecisionTreeClassifier(max_depth=3, min_samples_leaf=5, criterion='entropy', min_samples_split=5,
@@ -511,24 +453,13 @@ DTCclassifier = DecisionTreeClassifier(max_depth=3, min_samples_leaf=5, criterio
 DTCclassifier.fit(x_train, y_train)
 y_pred_DTC = DTCclassifier.predict(x_test)
 
-"""<div style="color:white;
-            display:fill;
-            border-radius:8px;
-            background-color:#2b2b2b;
-            font-size:120%;
-            font-family:sans-serif;
-            letter-spacing:0.5px">
-    <p style="padding: 8px;color:white;"><b>👉 | Decision Tree- 84% acc</b></p>
-</div>
-"""
+"""# Decision Tree """
 
 # --- Decision Tree Accuracy ---
 DTCAcc = accuracy_score(y_pred_DTC, y_test)
 print('.:. Decision Tree Accuracy:'+'\033[1m {:.2f}%'.format(DTCAcc*100)+' .:.')
 
-"""## <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;">Random Forest</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-"""
+"""## Random Forest"""
 
 # --- Applying Random Forest ---
 RFclassifier = RandomForestClassifier(n_estimators=1000, random_state=1, max_leaf_nodes=20, min_samples_split=15)
@@ -536,24 +467,13 @@ RFclassifier = RandomForestClassifier(n_estimators=1000, random_state=1, max_lea
 RFclassifier.fit(x_train, y_train)
 y_pred_RF = RFclassifier.predict(x_test)
 
-"""<div style="color:white;
-            display:fill;
-            border-radius:8px;
-            background-color:#2b2b2b;
-            font-size:120%;
-            font-family:sans-serif;
-            letter-spacing:0.5px">
-    <p style="padding: 8px;color:white;"><b>👉 | Random Forest - 89% acc</b></p>
-</div>
-"""
+"""# Random Forest - 89% """
 
 # --- Random Forest Accuracy ---
 RFAcc = accuracy_score(y_pred_RF, y_test)
 print('.:. Random Forest Accuracy:'+'\033[1m {:.2f}%'.format(RFAcc*100)+' .:.')
 
-"""## <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;"> Gradient Boosting</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-"""
+"""##  Gradient Boosting """
 
 # --- Applying Gradient Boosting ---
 GBclassifier = GradientBoostingClassifier(random_state=1, n_estimators=100, max_leaf_nodes=3, loss='exponential',
@@ -562,25 +482,14 @@ GBclassifier = GradientBoostingClassifier(random_state=1, n_estimators=100, max_
 GBclassifier.fit(x_train, y_train)
 y_pred_GB = GBclassifier.predict(x_test)
 
-"""<div style="color:white;
-            display:fill;
-            border-radius:8px;
-            background-color:#2b2b2b;
-            font-size:120%;
-            font-family:sans-serif;
-            letter-spacing:0.5px">
-    <p style="padding: 8px;color:white;"><b>👉 |Gradient Boosting - 87% acc</b></p>
-</div>
-"""
+""" # Gradient Boosting - 87% """
 
 # --- Gradient Boosting Accuracy ---
 GBAcc = accuracy_score(y_pred_GB, y_test)
 print('.:. Gradient Boosting Accuracy:'+'\033[1m {:.2f}%'.format(GBAcc*100)+' .:.')
 
-"""## <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;"> Model Comparison 👀</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-    👉 After implementing 10 models, this section will <b>compare machine learning models</b>.
-</div>
+"""##  Model Comparison
+    👉 After implementing 10 models, this section will <b>compare machine learning models
 """
 
 # --- Create Accuracy Comparison Table ---
