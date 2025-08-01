@@ -79,9 +79,10 @@ print('*' * 30)
 df.info(memory_usage = False)
 
 """
-    👉 It can be seen that dataset has successfully imported.<br>
-    👉 In the dataset, there are <mark><b>14 columns</b></mark> with <mark><b>1025 observations</b></mark>. Also, there are <mark><b>no null values</b></mark> in this dataset. The <b>details of each variables</b> also can be seen above.<br>
-    👉 However, the <mark><b>data types for some columns are not matched</b></mark>. Below will <mark><b>fixed the data types for those column</b></mark> before analysis performed.
+It can be seen that dataset has successfully imported.
+In the dataset, there are <mark><b>14 columns with 1025 observations. Also, there are no null values</b></mark> in this dataset. 
+The details of each variables also can be seen above.
+However, the <mark><b>data types for some columns are not matched. Below will <mark><b>fixed the data types for those column before analysis performed.
 """
 
 # --- Fix Data Types ---
@@ -164,20 +165,18 @@ print('*' * 45)
 df.target.value_counts(dropna=False)
 
 """ # Numerical Variable
-    👉 The second variable that will be explored is <b>numerical variable</b>.
+The second variable that will be explored is numerical variable<.
 
 # Descriptive Statistics
 
-    👉 This section will show <b>descriptive statistics</b> of numerical variables.
+This section will show descriptive statistics of numerical variables.
 """
 
 # --- Descriptive Statistics ---
 df.select_dtypes(exclude='object').describe().T.style.background_gradient(cmap='PuRd').set_properties(**{'font-family': 'Segoe UI'})
 
-"""### <div style="font-family: Trebuchet MS; background-color: #FF5C8A; color: #FFFFFF; padding: 12px; line-height: 1.5;"> Continuous Column Distribution 📈</div>
-<div style="font-family: Segoe UI; line-height: 2; color: #000000; text-align: justify">
-    👉 This section will show the <b>distribution of numerical variables</b> in histograms, boxplots, Q-Q Plots, skewness and kurtosis values.
-</div>
+"""# Continuous Column Distribution
+This section will show the <b>distribution of numerical variables in histograms, boxplots, Q-Q Plots, skewness and kurtosis values.
 """
 
 # --- Variable, Color & Plot Size ---
